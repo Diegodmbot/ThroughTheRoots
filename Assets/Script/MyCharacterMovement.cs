@@ -11,9 +11,6 @@ public class MyCharacterMovement : MonoBehaviour {
   /// <value> The rigidbody of the object </value>
   private Rigidbody2D rb;
 
-  /// <value> Can the character jump? </value>
-  private bool canJump = true;
-
   /// <summary>
     /// Move the character in the x-axis
   /// </summary>
@@ -48,7 +45,7 @@ public class MyCharacterMovement : MonoBehaviour {
     rb = GetComponent<Rigidbody2D>();
   }
 
-  private void OnCollisionEnter2D(Collision2D other) {
+  private void OnCollisionEnter(Collision other) {
     if (other.gameObject.CompareTag("Ground")) canJump = true;
   }
 }
