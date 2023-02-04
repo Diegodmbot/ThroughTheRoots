@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class moveToDifferentPoints : MonoBehaviour
 {
-    [ToolTip("Velocity of the object")]
-    [SerializeField] public float speed;
+    [Tooltip("Velocity of the object")]
+    [SerializeField] public float speed = 3f;
 
     [Tooltip("GameObject to move to")]
     [SerializeField] public Transform[] points;
 
     [Tooltip("Starting point of the platform")]
-    [SerializeField] public int currentPoint;
+    [SerializeField] public int currentPoint = 0;
 
     private int index;
     // Start is called before the first frame update
