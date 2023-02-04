@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class CooldownBar : MonoBehaviour {
     private Slider slider;
 
+    void Awake() {
+        slider = GetComponent<Slider>();  
+    }
     public void SetMaxCooldownValue (float maxValue) {
         slider.maxValue = maxValue;
         slider.value = maxValue;
@@ -14,7 +17,4 @@ public class CooldownBar : MonoBehaviour {
         slider.value = currentValue;
     }
 
-    void Start() {
-        slider = GetComponent<Slider>();
-    }
 }

@@ -26,6 +26,10 @@ public class CharacterDash : MonoBehaviour {
   /// <value> How much time the character has waited. </value>
   private float currentCooldown = 0f;
 
+  private void Start() {
+    bar.SetMaxCooldownValue(dashCooldown);
+    rb = GetComponent<Rigidbody2D>();
+  }
   /// <summary>
     /// Make the character dash
   /// </summary>
@@ -53,8 +57,4 @@ public class CharacterDash : MonoBehaviour {
     currentCooldown = dashCooldown;
   }
 
-  private void Start() {
-    bar.SetMaxCooldownValue(dashCooldown);
-    rb = GetComponent<Rigidbody2D>();
-  }
 }
