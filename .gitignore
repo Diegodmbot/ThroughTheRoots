@@ -76,3 +76,5 @@ crashlytics-build.properties
 
 *.meta
 .vscode
+Assets/Samples/Cinemachine/**
+Assets/TextMesh Pro/**
