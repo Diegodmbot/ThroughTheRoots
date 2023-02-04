@@ -76,10 +76,5 @@ crashlytics-build.properties
 
 *.meta
 .vscode
-<<<<<<< HEAD
 Assets/Samples/Cinemachine/**
 Assets/TextMesh Pro/**
-=======
-Assets/TextMesh Pro/**
-Assets/Samples/Cinemachine/**
->>>>>>> HUD
