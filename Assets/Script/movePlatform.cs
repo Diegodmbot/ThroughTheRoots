@@ -20,7 +20,6 @@ public class movePlatform : MonoBehaviour
     void Start()
     {
         
-        
     }
     
     bool isInRangeX(float xPosition) {
