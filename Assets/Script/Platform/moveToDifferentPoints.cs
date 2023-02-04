@@ -6,11 +6,7 @@ using UnityEngine;
 public class moveToDifferentPoints : MonoBehaviour
 {
     [Tooltip("Velocity of the object")]
-<<<<<<< HEAD
     [SerializeField] public float speed = 3f;
-=======
-    [SerializeField] public float speed;
->>>>>>> Platforms
 
     [Tooltip("GameObject to move to")]
     [SerializeField] public Transform[] points;

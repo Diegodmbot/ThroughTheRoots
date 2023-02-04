@@ -42,7 +42,7 @@ public class MyCharacterAttacks : MonoBehaviour {
     Vector2 relativeForce = new Vector2(15f * transform.localScale.x, 3f);
 
     newProjectile.GetComponent<Rigidbody2D>().AddForce(relativeForce, ForceMode2D.Impulse);
-
+    currentAttackCD = attackCooldown;
   }
 
   void Update() {
@@ -52,19 +52,15 @@ public class MyCharacterAttacks : MonoBehaviour {
 
     if (Input.GetKeyDown(KeyCode.J) && currentAttackCD <= 0) {
       MeleeAttack();
-<<<<<<< HEAD
     }
     if (Input.GetKeyDown(KeyCode.K) && currentAttackCD <= 0) {
       RangedAttack();
     }
-    currentAttackCD -= Time.deltaTime;
-=======
-     }
+    //currentAttackCD -= Time.deltaTime;
   }
 
   void Start() {
     attackCooldownBar.SetMaxCooldownValue(attackCooldown);    
->>>>>>> HUD
   }
 
   void OnDrawGizmosSelected() {
