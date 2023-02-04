@@ -3,18 +3,27 @@ using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterDash : MonoBehaviour {
-  private bool canDash = true;
-  private bool isDashing = false;
-  private float dashTime = 0.2f;
-  private float dashCooldown = 1f;
-  private float dashPower = 24f;
+  [Tooltip("The cooldown of the dash")]
+  [SerializeField] private float dashCooldown = 1f;
 
+  [Tooltip("The power of the dash")]
+  [SerializeField] private float dashPower = 24f;
+
+  /// <value> Whether the character can dash or not </value>
+  private bool canDash = true;
+
+  /// <value> Whether the character is dashing or not </value>
+  private bool isDashing = false;
+
+  /// <value> The time the dash lasts </value>
+  private float dashTime = 0.2f;
+
+  /// <value> The rigidbody of the object </value>
   private Rigidbody2D rb;
 
-  private void Start() {
-    rb = GetComponent<Rigidbody2D>();
-  }
-
+  /// <summary>
+    /// Make the character dash
+  /// </summary>
   private IEnumerator Dash() {
     canDash = false;
     isDashing = true;
@@ -25,8 +34,8 @@ public class CharacterDash : MonoBehaviour {
     // Wait for the dash to end
     yield return new WaitForSeconds(dashTime);
     rb.gravityScale = originalGravity;
-        rb.velocity = Vector2.zero;
-        isDashing = false;
+    rb.velocity = Vector2.zero;
+    isDashing = false;
 
     // Wait for the cooldown to reset the dash
     yield return new WaitForSeconds(dashCooldown);
@@ -37,5 +46,9 @@ public class CharacterDash : MonoBehaviour {
     if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing) {
       StartCoroutine(Dash());
     }
+  }
+
+  private void Start() {
+    rb = GetComponent<Rigidbody2D>();
   }
 }
