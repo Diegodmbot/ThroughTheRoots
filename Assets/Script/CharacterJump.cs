@@ -35,7 +35,7 @@ public class CharacterJump : MonoBehaviour {
     jumpsLeft = maxJumps;
   }
 
-  private void OnCollisionEnter(Collision other) {
+  private void OnCollisionEnter2D(Collision2D other) {
     if (!other.gameObject.CompareTag("Ground")) return;
     jumpsLeft = maxJumps;
   }

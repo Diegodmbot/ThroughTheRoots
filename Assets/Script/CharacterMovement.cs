@@ -24,6 +24,6 @@ public class CharacterMovement : MonoBehaviour {
   }
 
   private void Start() {
-    rb = GetComponent<Rigidbody2D>();
+        
   }
 }
