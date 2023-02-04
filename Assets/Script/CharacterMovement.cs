@@ -1,15 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MyCharacterMovement : MonoBehaviour {
+public class CharacterMovement : MonoBehaviour {
   [Tooltip("The speed of the character")]
   [SerializeField] private float speed = 4f;
-
-  [Tooltip("The jump force of the character")]
-  [SerializeField] private float jumpForce = 6f;
-
-  /// <value> The rigidbody of the object </value>
-  private Rigidbody2D rb;
 
   /// <summary>
     /// Move the character in the x-axis
@@ -25,27 +19,11 @@ public class MyCharacterMovement : MonoBehaviour {
     transform.position += direction * speed * Time.deltaTime;
   }
 
-  /// <summary>
-    /// Make the character jump
-  /// </summary>
-  private void Jump() {
-    // Add the jump force to the character
-    rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-  }
-
   private void Update() {
     Movement();
-    if (Input.GetKeyDown(KeyCode.Space) && canJump) {
-      Jump();
-      canJump = false;
-    }
   }
 
   private void Start() {
     rb = GetComponent<Rigidbody2D>();
-  }
-
-  private void OnCollisionEnter(Collision other) {
-    if (other.gameObject.CompareTag("Ground")) canJump = true;
   }
 }
