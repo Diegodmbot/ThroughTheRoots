@@ -19,6 +19,7 @@ public class CharacterJump : MonoBehaviour {
     /// Make the character jump
   /// </summary>
   private void Jump() {
+    rb.velocity = Vector2.zero;
     // Add the jump force to the character
     rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
   }

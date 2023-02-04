@@ -16,5 +16,4 @@ public class CooldownBar : MonoBehaviour {
     public void SetCooldown (float currentValue) {
         slider.value = currentValue;
     }
-
 }
