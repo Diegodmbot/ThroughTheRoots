@@ -47,12 +47,10 @@ public class CharacterDash : MonoBehaviour {
     currentCooldown = (currentCooldown <= 0 ? 0 : currentCooldown);
     bar.SetCooldown(dashCooldown - currentCooldown);
 
-    if (currentCooldown > 0) return;
+    if (!Input.GetKeyDown(KeyCode.LeftShift) || isDashing || currentCooldown > 0) return;
 
-    if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) {
-      StartCoroutine(Dash());
-      currentCooldown = dashCooldown;
-    }
+    StartCoroutine(Dash());
+    currentCooldown = dashCooldown;
   }
 
   private void Start() {
