@@ -76,3 +76,4 @@ crashlytics-build.properties
 
 *.meta
 .vscode
+Assets/TextMesh Pro/**
