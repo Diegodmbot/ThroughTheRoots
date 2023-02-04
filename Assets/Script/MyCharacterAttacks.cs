@@ -45,11 +45,11 @@ public class MyCharacterAttacks : MonoBehaviour {
 
     if (Input.GetKeyDown(KeyCode.J) && currentAttackCD <= 0) {
       MeleeAttack();
-    }
+     }
   }
 
   void Start() {
-    attackCooldownBar.SetMaxCooldownValue(attackCooldown);
+    attackCooldownBar.SetMaxCooldownValue(attackCooldown);    
   }
 
   void OnDrawGizmosSelected() {
