@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterDash : MonoBehaviour {
-  private bool canDash;
-  private bool isDashing;
+  private bool canDash = true;
+  private bool isDashing = false;
   private float dashTime = 0.2f;
   private float dashCooldown = 1f;
   private float dashPower = 24f;
@@ -24,7 +25,8 @@ public class CharacterDash : MonoBehaviour {
     // Wait for the dash to end
     yield return new WaitForSeconds(dashTime);
     rb.gravityScale = originalGravity;
-    isDashing = false;
+        rb.velocity = Vector2.zero;
+        isDashing = false;
 
     // Wait for the cooldown to reset the dash
     yield return new WaitForSeconds(dashCooldown);
