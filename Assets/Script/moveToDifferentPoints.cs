@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class moveToDifferentPoints : MonoBehaviour
 {
-    [ToolTip("Velocity of the object")]
+    [Tooltip("Velocity of the object")]
     [SerializeField] public float speed;
 
     [Tooltip("GameObject to move to")]
@@ -32,5 +32,21 @@ public class moveToDifferentPoints : MonoBehaviour
             }
         }
         transform.position = Vector2.MoveTowards(transform.position, points[index].position, speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.SetParent(null);
+        }
     }
 }
