@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
   [Tooltip("The maximum amount of points the entity may have")]
-  [SerializeField] private int maxHP = 3;
+  [SerializeField] protected int maxHP = 3;
 
   [Tooltip("The current amount of health points")]
-  [SerializeField] private int currentHP = 3;
+  [SerializeField] protected int currentHP = 3;
 
   /// <summary>
     /// Reset the amount of current of health points
