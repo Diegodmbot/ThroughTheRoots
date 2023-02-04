@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Jump : MonoBehaviour {
+public class CharacterJump : MonoBehaviour {
   [Tooltip("The jump force of the character")]
   [SerializeField] private float jumpForce = 6f;
 
