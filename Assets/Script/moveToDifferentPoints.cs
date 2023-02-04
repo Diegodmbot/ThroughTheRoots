@@ -6,7 +6,11 @@ using UnityEngine;
 public class moveToDifferentPoints : MonoBehaviour
 {
     [Tooltip("Velocity of the object")]
+<<<<<<< HEAD
     [SerializeField] public float speed = 3f;
+=======
+    [SerializeField] public float speed;
+>>>>>>> Platforms
 
     [Tooltip("GameObject to move to")]
     [SerializeField] public Transform[] points;
@@ -32,5 +36,21 @@ public class moveToDifferentPoints : MonoBehaviour
             }
         }
         transform.position = Vector2.MoveTowards(transform.position, points[index].position, speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.SetParent(null);
+        }
     }
 }
