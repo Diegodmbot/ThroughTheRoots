@@ -15,7 +15,7 @@ public class Health : MonoBehaviour {
   }
 
   /// <summary>
-    /// Add HP 
+    /// Add HP to the current amount of health points
   /// </summary>
   public void restoreHP (int hpRestored) {
     currentHP += hpRestored;

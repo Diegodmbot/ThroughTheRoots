@@ -1,15 +1,16 @@
 using UnityEngine; // UNITY
 using System.Collections;
 using System.Collections.Generic;
+
 public class MyCharacterAttacks : MonoBehaviour {
   [Tooltip("Attack Hitbox")]
-  [SerializeField]private Transform attackPoint;
+  [SerializeField] private Transform attackPoint;
 
   [Tooltip("How far the attack can get.")]
-  [SerializeField]private float attackRange = 0.5f;
+  [SerializeField] private float attackRange = 0.5f;
 
   [Tooltip("Layer of the enemies that can be attacked by the player")]
-  [SerializeField]private LayerMask enemyLayers;
+  [SerializeField] private LayerMask enemyLayers;
 
   [Tooltip("The time the player has to wait to attack again")]
   [SerializeField] private float attackCooldown = 1.0f;
@@ -38,7 +39,7 @@ public class MyCharacterAttacks : MonoBehaviour {
   }
 
   void OnDrawGizmosSelected() {
-    if(attackPoint == null) return;
+    if (attackPoint == null) return;
     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
   }
 }
