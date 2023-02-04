@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Threading;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterDash : MonoBehaviour {
@@ -9,8 +11,8 @@ public class CharacterDash : MonoBehaviour {
   [Tooltip("The power of the dash")]
   [SerializeField] private float dashPower = 24f;
 
-  /// <value> Whether the character can dash or not </value>
-  private bool canDash = true;
+  [Tooltip("The cooldown bar")]
+  [SerializeField] private CooldownBar bar;
 
   /// <value> Whether the character is dashing or not </value>
   private bool isDashing = false;
@@ -21,11 +23,17 @@ public class CharacterDash : MonoBehaviour {
   /// <value> The rigidbody of the object </value>
   private Rigidbody2D rb;
 
+  /// <value> How much time the character has waited. </value>
+  private float currentCooldown = 0f;
+
+  private void Start() {
+    bar.SetMaxCooldownValue(dashCooldown);
+    rb = GetComponent<Rigidbody2D>();
+  }
   /// <summary>
     /// Make the character dash
   /// </summary>
   private IEnumerator Dash() {
-    canDash = false;
     isDashing = true;
     float originalGravity = rb.gravityScale;
     rb.gravityScale = 0;
@@ -36,19 +44,17 @@ public class CharacterDash : MonoBehaviour {
     rb.gravityScale = originalGravity;
     rb.velocity = Vector2.zero;
     isDashing = false;
-
-    // Wait for the cooldown to reset the dash
-    yield return new WaitForSeconds(dashCooldown);
-    canDash = true;
   }
 
   private void Update() {
-    if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing) {
-      StartCoroutine(Dash());
-    }
+    currentCooldown -= Time.deltaTime;
+    currentCooldown = (currentCooldown <= 0 ? 0 : currentCooldown);
+    bar.SetCooldown(dashCooldown - currentCooldown);
+
+    if (!Input.GetKeyDown(KeyCode.LeftShift) || isDashing || currentCooldown > 0) return;
+
+    StartCoroutine(Dash());
+    currentCooldown = dashCooldown;
   }
 
-  private void Start() {
-    rb = GetComponent<Rigidbody2D>();
-  }
 }
