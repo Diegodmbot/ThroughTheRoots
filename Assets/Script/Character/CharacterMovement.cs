@@ -4,6 +4,8 @@ public class CharacterMovement : MonoBehaviour {
   [Tooltip("The speed of the character")]
   [SerializeField] private float speed = 4f;
 
+  [SerializeField] private Animator anim;
+
   /// <value> The direction the character is facing </value>
   private bool isFacingRight = true;
 
@@ -11,9 +13,11 @@ public class CharacterMovement : MonoBehaviour {
     /// Move the character in the x-axis
   /// </summary>
   /// <param name="horizontal"> The horizontal input from the player </param>
-  private void Movement(float horizontal) {
+  private void Movement (float horizontal) {
     // Calculate the direction of the movement
     Vector3 direction = new Vector3(horizontal, 0, 0);
+
+    anim.SetBool("IsWalking", horizontal != 0);
 
     // Move the character
     transform.position += direction * speed * Time.deltaTime;

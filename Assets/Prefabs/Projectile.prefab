@@ -143,10 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7257787293623789810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96a36df8f49b694a9605a8d51fb82ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 55cf245df8383d046b4bc894501c3db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
