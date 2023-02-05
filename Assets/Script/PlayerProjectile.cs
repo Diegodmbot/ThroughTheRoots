@@ -11,14 +11,14 @@ public class PlayerProjectile : MonoBehaviour {
       Health enemyHealth = other.GetComponent<Health>();
       enemyHealth.decreaseHP(projectileDamage);
     }
-    Destroy(gameObject);
+    if (other.gameObject.tag != "Player") Destroy(gameObject);
   }
 
   private IEnumerator DestroyProjectile () {
     yield return new WaitForSeconds(5f);
     Destroy(gameObject);
-
   }
+
   void Update() {
     StartCoroutine(DestroyProjectile());
   }

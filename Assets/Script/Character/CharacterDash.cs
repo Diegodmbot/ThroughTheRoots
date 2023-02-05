@@ -11,8 +11,10 @@ public class CharacterDash : MonoBehaviour {
   [Tooltip("The power of the dash")]
   [SerializeField] private float dashPower = 24f;
 
-  [Tooltip("The cooldown bar")]
-  [SerializeField] private CooldownBar bar;
+  // [Tooltip("The cooldown bar")]
+  // [SerializeField] private CooldownBar bar;
+
+  [SerializeField] private Animator anim;
 
   /// <value> Whether the character is dashing or not </value>
   private bool isDashing = false;
@@ -27,7 +29,7 @@ public class CharacterDash : MonoBehaviour {
   private float currentCooldown = 0f;
 
   private void Start() {
-    bar.SetMaxCooldownValue(dashCooldown);
+    // bar.SetMaxCooldownValue(dashCooldown);
     rb = GetComponent<Rigidbody2D>();
   }
   /// <summary>
@@ -37,7 +39,8 @@ public class CharacterDash : MonoBehaviour {
     isDashing = true;
     float originalGravity = rb.gravityScale;
     rb.gravityScale = 0;
-    rb.velocity = new Vector2(transform.localScale.x * dashPower, 0f); 
+    rb.velocity = new Vector2(transform.localScale.x * dashPower, 0f);
+    anim.SetTrigger("startDash");
 
     // Wait for the dash to end
     yield return new WaitForSeconds(dashTime);
@@ -49,7 +52,7 @@ public class CharacterDash : MonoBehaviour {
   private void Update() {
     currentCooldown -= Time.deltaTime;
     currentCooldown = (currentCooldown <= 0 ? 0 : currentCooldown);
-    bar.SetCooldown(dashCooldown - currentCooldown);
+    // bar.SetCooldown(dashCooldown - currentCooldown);
 
     if (!Input.GetKeyDown(KeyCode.LeftShift) || isDashing || currentCooldown > 0) return;
 

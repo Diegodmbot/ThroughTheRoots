@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: jungle tileset_240
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -914283234, guid: 84f43bfc00852294d92e8c5d3950a384, type: 3}
+  m_Sprite: {fileID: 1276960991, guid: 6005ff9b10849174ab5af8ddac5bd91d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
